@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Underdog"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://images/icon.svg"
+config/icon="res://images/third-party/icon.svg"
 
 [rendering]
 
