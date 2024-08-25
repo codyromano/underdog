@@ -240,7 +240,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_7lvm8")
 }],
 "loop": true,
-"name": &"run_right",
+"name": &"run",
 "speed": 5.0
 }]
 
@@ -252,7 +252,7 @@ script = ExtResource("1_a8s3v")
 
 [node name="HumanAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fv1f5")
-animation = &"run_right"
+animation = &"run"
 speed_scale = 2.0
 
 [node name="HumanCollisionShape2D" type="CollisionShape2D" parent="."]
