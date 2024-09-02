@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cypn3xv55wv3x"]
+[gd_scene load_steps=3 format=3 uid="uid://cypn3xv55wv3x"]
 
 [ext_resource type="PackedScene" uid="uid://bcowpx10pd6ir" path="res://snow_level.tscn" id="1_j2b27"]
+[ext_resource type="PackedScene" uid="uid://3kjss6crvlot" path="res://scenes/light_environment_top_level.tscn" id="1_wj28j"]
 
 [node name="RootGameNode2D" type="Node2D"]
+
+[node name="LightEnvironmentTopLevel" parent="." instance=ExtResource("1_wj28j")]
 
 [node name="DarkEnvironmentBottomLevel" parent="." instance=ExtResource("1_j2b27")]
 position = Vector2(7, -529)
