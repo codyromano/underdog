@@ -5,4 +5,4 @@
 [node name="RootGameNode2D" type="Node2D"]
 
 [node name="SnowEnvironmentBottomLevel" parent="." instance=ExtResource("1_j2b27")]
-position = Vector2(-64, -551)
+position = Vector2(7, -529)
