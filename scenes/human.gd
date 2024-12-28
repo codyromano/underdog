@@ -7,13 +7,24 @@ const JUMP_VELOCITY = -400.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_facing_left = false;
 
-func _physics_process(delta):
-	if not is_on_floor():
-		velocity.y += gravity * delta
+func get_character_height():
+	var animation_name = $HumanAnimatedSprite2D.get_animation()
+	var frames = $HumanAnimatedSprite2D.get_sprite_frames()
+	var texture = frames.get_frame_texture(animation_name, 0)
+	var texture_size = texture.get_size()
+	
+	if texture_size:
+		return texture_size[1]
+	
 
-	# Get the input direction and handle the movement/deceleration.
+func _physics_process(delta):
 	var direction = Input.get_axis("ui_left", "ui_right")
 	
+	if not is_on_floor():
+		velocity.y += gravity * delta
+		
+
+	# Get the input direction and handle the movement/deceleration.
 	if Input.is_action_just_pressed("move_left"):
 		is_facing_left = true
 	elif Input.is_action_just_pressed("move_right"):
@@ -22,7 +33,13 @@ func _physics_process(delta):
 	$HumanAnimatedSprite2D.flip_h = is_facing_left
 	$HumanAnimatedSprite2D.play("run" if direction else "idle")
 	
-	if Input.is_action_just_pressed("move_up"):
+	var character_height = self.get_character_height()
+	
+	# TODO: This is a hack to prevent repeated jumps. The right solution is to use
+	# is_on_floor() but debug to see why it evaluates to true.
+	var is_not_in_the_air = velocity.y > 0 and velocity.y < character_height
+	
+	if Input.is_action_just_pressed("move_up") and is_not_in_the_air:
 		velocity.y += JUMP_VELOCITY
 	
 	if direction:
